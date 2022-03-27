@@ -58,7 +58,7 @@ const gamePlay = {
 
         this.text = this.add.text(50, 50,
             '', {
-                wordWrap: { width: screenW * 2 / 3, useAdvancedWrap: true },
+                wordWrap: { width: screenW * 2 / 3, useAdvancedWrap: false },
                 fontSize: 30
             });
         //變數
@@ -117,7 +117,8 @@ const gamePlay = {
         if (this.walkM == 120) this.text.setText("愛蘭臺地因地勢高，嫁過來的婦女得去南港溪挑水，很少人願意嫁來愛蘭，於是這裡的坡被稱作「無某崎」。");
         if (this.walkM == 165) this.text.setText("土角牆是早期愛蘭開發時，居民用土和碎稻梗作磚砌成的牆，至今愛蘭仍保留八十年以上的土角牆。");
         if (this.walkM == 200) this.text.setText("台灣基督長老教會愛蘭教會，是一間以巴宰族為主的教會，也是埔里基督教信仰的重要起源地。921地震後，愛蘭教會成為巴宰族人心靈重建與文化復振的根據地，不僅給予精神支持，也帶頭推動巴宰文化復振工作。");
-        this.text.setLineSpacing(1);
+
+
         //if (this.slopem > -25) this.slopem -= 5;
         this.bridge_stone.setVelocityY(5 / 25 * (-this.slopem));
         this.temple.setVelocityY(5 / 25 * (-this.slopem));
