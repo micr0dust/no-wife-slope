@@ -58,8 +58,7 @@ const gamePlay = {
 
         this.text = this.add.text(50, 50,
             '', {
-                wordWrap: true,
-                wordWrapWidth: 30,
+                wordWrap: { width: 450, useAdvancedWrap: true },
                 fontFamily: 'Arial',
                 fontSize: 30
             });
