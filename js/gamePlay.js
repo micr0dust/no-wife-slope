@@ -60,7 +60,7 @@ const gamePlay = {
             '', {
                 fontFamily: 'Arial',
                 fontSize: 28,
-                lineSpacing: 10
+                lineSpacing: 1
             });
         //變數
         this.slopem = 0;
