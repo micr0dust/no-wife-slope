@@ -59,8 +59,7 @@ const gamePlay = {
         this.text = this.add.text(50, 50,
             '', {
                 fontFamily: 'Arial',
-                fontSize: 28,
-                lineSpacing: 1
+                fontSize: 28
             });
         //變數
         this.slopem = 0;
