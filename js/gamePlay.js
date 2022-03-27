@@ -59,7 +59,6 @@ const gamePlay = {
         this.text = this.add.text(50, 50,
             '', {
                 wordWrap: { width: screenW * 2 / 3, useAdvancedWrap: true },
-                fontFamily: 'Arial',
                 fontSize: 30
             });
         //變數
