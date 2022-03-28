@@ -58,17 +58,14 @@ const gamePlay = {
 
         this.text1 = this.add.text(50, 50,
             '', {
-                wordWrap: { width: screenW * 2 / 3, useAdvancedWrap: true },
                 fontSize: 30
             });
         this.text2 = this.add.text(50, 100,
             '', {
-                wordWrap: { width: screenW * 2 / 3, useAdvancedWrap: true },
                 fontSize: 30
             });
         this.text3 = this.add.text(50, 150,
             '', {
-                wordWrap: { width: screenW * 2 / 3, useAdvancedWrap: true },
                 fontSize: 30
             });
         //變數
