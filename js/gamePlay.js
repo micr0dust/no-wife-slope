@@ -56,9 +56,19 @@ const gamePlay = {
         this.shadow = this.add.image(screenW / 2, screenH * 38 / 40, 'shadow');
         this.bg5 = this.add.tileSprite(screenW / 2, screenW / 2, screenW, screenW, 'bg5');
 
-        this.text = this.add.text(50, 50,
+        this.text1 = this.add.text(50, 50,
             '', {
-                wordWrap: { width: screenW * 2 / 3, useAdvancedWrap: false },
+                wordWrap: { width: screenW * 2 / 3, useAdvancedWrap: true },
+                fontSize: 30
+            });
+        this.text2 = this.add.text(50, 100,
+            '', {
+                wordWrap: { width: screenW * 2 / 3, useAdvancedWrap: true },
+                fontSize: 30
+            });
+        this.text3 = this.add.text(50, 150,
+            '', {
+                wordWrap: { width: screenW * 2 / 3, useAdvancedWrap: true },
                 fontSize: 30
             });
         //變數
@@ -112,11 +122,31 @@ const gamePlay = {
             this.time.delayedCall(1000, () => { location.reload() });
         }
 
-        if (this.walkM == 27) this.text.setText("醒靈寺是二二八事件最終戰役──「烏牛欄之役」的古戰場，當時於今愛蘭橋設有一吊橋一群學生約（三十餘人），在橋頭與國民黨軍（七百餘人）對戰造成該營傷亡二百人以上，為台灣歷史上的以寡擊眾的知名戰役。");
-        if (this.walkM == 60) this.text.setText("日本政府曾在此建造烏牛欄吊橋，但橋頭「烏牛欄橋」石碑已遭埔里鎮公所破壞。");
-        if (this.walkM == 120) this.text.setText("愛蘭臺地因地勢高，嫁過來的婦女得去南港溪挑水，很少人願意嫁來愛蘭，於是這裡的坡被稱作「無某崎」。");
-        if (this.walkM == 165) this.text.setText("土角牆是早期愛蘭開發時，居民用土和碎稻梗作磚砌成的牆，至今愛蘭仍保留八十年以上的土角牆。");
-        if (this.walkM == 200) this.text.setText("台灣基督長老教會愛蘭教會，是一間以巴宰族為主的教會，也是埔里基督教信仰的重要起源地。921地震後，愛蘭教會成為巴宰族人心靈重建與文化復振的根據地，不僅給予精神支持，也帶頭推動巴宰文化復振工作。");
+        if (this.walkM == 27) {
+            this.text1.setText("醒靈寺是二二八事件最終戰役──「烏牛欄之役」的古戰場，當時於今愛蘭橋");
+            this.text2.setText("設有一吊橋一群學生約（三十餘人），在橋頭與國民黨軍（七百餘人）對戰");
+            this.text3.setText("造成該營傷亡二百人以上，為台灣歷史上的以寡擊眾的知名戰役。");
+        }
+        if (this.walkM == 60) {
+            this.text1.setText("日本政府曾在此建造烏牛欄吊橋，但橋頭「烏牛欄橋」石碑已遭埔里鎮公所破壞。");
+            this.text2.setText("");
+            this.text3.setText("");
+        }
+        if (this.walkM == 120) {
+            this.text1.setText("愛蘭臺地因地勢高，嫁過來的婦女得去南港溪挑水，很少人願意嫁來愛蘭");
+            this.text2.setText("，於是這裡的坡被稱作「無某崎」。");
+            this.text3.setText("");
+        }
+        if (this.walkM == 165) {
+            this.text1.setText("土角牆是早期愛蘭開發時，居民用土和碎稻梗作磚砌成的牆，至今愛蘭仍保留");
+            this.text2.setText("八十年以上的土角牆。");
+            this.text3.setText("");
+        }
+        if (this.walkM == 200) {
+            this.text1.setText("台灣基督長老教會愛蘭教會，是一間以巴宰族為主的教會，也是埔里基督教信仰");
+            this.text2.setText("的重要起源地。921地震後，愛蘭教會成為巴宰族人心靈重建與文化復振的根據地");
+            this.text3.setText("，不僅給予精神支持，也帶頭推動巴宰文化復振工作。");
+        }
 
 
         //if (this.slopem > -25) this.slopem -= 5;
