@@ -12,7 +12,6 @@ const gameStart = {
         this.load.image('bg2', 'images/bg2.png');
         this.load.image('bg5', 'images/bg5.png');
         this.load.image('title', 'images/title.png');
-        this.load.image('btn', 'images/btn.png');
         this.load.image('shadow', 'images/shadow.png');
         this.load.spritesheet('woman', 'images/woman.png', { frameWidth: 308, frameHeight: 294 });
         //this.load.audio('hob', 'sounds/hob.mp3');
