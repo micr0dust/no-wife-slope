@@ -24,7 +24,7 @@ const gamePlay = {
 
     },
     create: function() {
-        this.finalsec = 180;
+        this.finalsec = 200;
         // 資源載入完成，加入遊戲物件及相關設定
         this.bg = this.add.image(screenW / 2, screenH / 4, 'bg');
         this.town = this.add.image(screenW * 8 / 15, screenH * 9 / 13, 'town');
@@ -32,31 +32,34 @@ const gamePlay = {
         this.house.visible = false;
         this.town.setScale(screenW / 1007 * 19 / 17, screenH / 395 * 24 / 17);
         this.town.visible = false;
-        this.bridge_stone = this.physics.add.sprite(screenW * 26 / 10, screenH * 6 / 13, 'bridge_stone');
+        this.bridge_stone = this.physics.add.sprite(screenW * 16 / 10, screenH * 6 / 13, 'bridge_stone');
         this.bridge_stone.setVelocityX(detla(-22));
-        this.bridge_stone.setScale(screenW / 255 * 12 / 17, screenH / 178);
+        this.bridge_stone.setScale(screenW / 255, screenH / 178);
 
         this.statue = this.physics.add.sprite(screenW * 3 / 15, screenH * 11 / 10, 'statue');
         this.statue.setScale(0.5);
         this.statue.setVelocityX(detla(-22));
 
         this.temple = this.physics.add.sprite(screenW * 12 / 10, screenH * 7 / 13, 'temple');
+        this.temple.setScale(screenW / 680 / 2, screenH / 510 / 2);
         this.temple.setVelocityX(detla(-22));
 
         this.church = this.physics.add.sprite(screenW * 12 / 10, screenH * 7 / 13, 'church');
+        this.church.setScale(screenW / 493 / 2, screenH / 642 / 2);
+        this.church.visible = false;
         //this.church.setVelocityX(detla(-22));
 
-        this.wall = this.add.tileSprite(screenW * 30 / 40, screenH / 2 - screenH / 4, screenW * 2, screenW, 'wall');
-        this.wall.setScale(1.5);
+        this.wall = this.add.tileSprite(screenW * 30 / 40, screenH / 2 - screenH / 3 - screenH / 10, screenW * 2, screenW, 'wall');
+        this.wall.setScale(screenW / 597 / 4 * 4, screenH / 745 / 4 * 4);
         this.wall.visible = false;
         //this.wall.angle = -25;
 
         this.bg2 = this.add.tileSprite(screenW / 2, screenW / 2, screenW, screenW, 'bg2');
         console.log(screenW, screenH)
-        this.road = this.add.tileSprite(screenW / 2, screenH / 2, screenW * 2 - screenH / 8, screenH * 2, 'road');
+        this.road = this.add.tileSprite(screenW / 2, screenH / 3, screenW * 2 - screenH / 8, screenH * 2, 'road');
+        this.road.setScale(screenW / 1920 * 2, screenH / 1920 * 2);
 
-
-        this.shadow = this.add.image(screenW / 2, screenH * 38 / 40, 'shadow');
+        this.shadow = this.physics.add.sprite(screenW / 2, screenH * 38 / 40, 'shadow');
         this.bg5 = this.add.tileSprite(screenW / 2, screenW / 2, screenW, screenW, 'bg5');
 
         this.text1 = this.add.text(50, 50,
@@ -106,11 +109,11 @@ const gamePlay = {
         // 遊戲狀態更新
         if (this.walkM < this.finalsec) this.road.tilePositionX += detla(0.2);
         if (this.walkM < this.finalsec) this.house.tilePositionX += detla(0.2);
-        this.wall.tilePositionX += detla(0.2);
-        this.bg2.tilePositionY -= detla(0.5);
-        this.bg5.tilePositionY -= detla(1);
-        this.bg2.tilePositionX -= detla(0.5);
-        this.bg5.tilePositionX -= detla(1);
+        this.wall.tilePositionX += detla(0.2) / 2;
+        this.bg2.tilePositionY -= (0.5);
+        this.bg5.tilePositionY -= (1);
+        this.bg2.tilePositionX -= (0.5);
+        this.bg5.tilePositionX -= (1);
         if (this.slopem > -25 && this.walkM < 164) this.slopem -= detla(0.001);
         if (this.walkM >= 120 && !this.obj.townVisible) {
             this.town.visible = true;
@@ -121,23 +124,26 @@ const gamePlay = {
             this.house.visible = true;
             this.wall.visible = true;
             this.town.visible = false;
+            this.church.visible = true;
             this.church.setVelocityX(detla(-22));
         }
         if (this.walkM >= this.finalsec && !this.obj.final) {
             this.church.setVelocityX(0);
-            this.woman.setVelocityX(detla(12));
-            this.shadow.setVelocityX(detla(12));
+            this.woman.setVelocityX(detla(22));
+            this.shadow.setVelocityX(detla(22));
             this.wall.visible = false;
             this.obj.final = true;
         }
 
         if (this.walkM > 252) {
             this.cameras.main.fade(1000);
-            this.time.delayedCall(1000, () => { location.reload() });
+            this.time.delayedCall(1000, () => {
+                this.scene.start('end');
+                location.reload();
+            });
         }
 
         if (this.walkM >= 27 && !this.obj.temple) {
-            console.log(this.obj.temple)
             this.text1.setText("醒靈寺是二二八事件最終戰役──「烏牛欄之役」的古戰場，當時於今愛蘭橋");
             this.text2.setText("設有一吊橋一群學生約（三十餘人），在橋頭與國民黨軍（七百餘人）對戰");
             this.text3.setText("造成該營傷亡二百人以上，為台灣歷史上的以寡擊眾的知名戰役。");
@@ -170,8 +176,8 @@ const gamePlay = {
 
 
         //if (this.slopem > -25) this.slopem -= 5;
-        this.bridge_stone.setVelocityY(5 / 25 * (-this.slopem));
-        this.temple.setVelocityY(5 / 25 * (-this.slopem));
+        this.bridge_stone.setVelocityY(detla(5 / 25) * (-this.slopem));
+        this.temple.setVelocityY(detla(5 / 25) * (-this.slopem));
         //this.statue.setVelocityY(5 / 25 * (-this.slopem));
         this.road.angle = this.slopem;
         //this.road.angle = 0;
@@ -184,5 +190,5 @@ const gamePlay = {
 }
 
 function detla(x) {
-    return x * 1000 / 100;
+    return x * 500 / 100;
 }
